@@ -10,17 +10,17 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class CategoryService {
+public class ProductoService {
 
     private ProductoRepository productoRepository;
 
-    public List<Producto> listarCategorias(){
+    public List<Producto> listarProducto(){
         return productoRepository.findAll();
     }
     public Producto guardar(Producto producto){
         return productoRepository.save(producto);
     }
-    public Optional<Producto> obtenerCategoriaPorId(Integer id){
+    public Optional<Producto> obtenerProductoPorId(Integer id){
         Optional<Producto> category = productoRepository.findById(id);
         if(category.isEmpty()){
             return Optional.empty();
@@ -28,7 +28,7 @@ public class CategoryService {
             return category;
     }
 
-    public Optional<Producto> obtenerCatogoriaPorNombre(String categoryName){
+    public Optional<Producto> obtenerPorNombre(String categoryName){
         Optional<Producto> category = productoRepository.findByCategoryname(categoryName);
         if(category.isEmpty())
             return  Optional.empty();
@@ -36,9 +36,11 @@ public class CategoryService {
             return category;
     }
 
-    public List<Producto> obtenerCategoriasPorFiltro(String filtro){
+    public List<Producto> obtenerProductoPorFiltro(String filtro){
         return productoRepository.filtrarCategoriasPorNombreSQL(filtro);
     }
+    public void eliminarCategoriaPorId(int id){
 
+    }
 
 }
